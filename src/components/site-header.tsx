@@ -33,11 +33,7 @@ const solutionLinks = [
   },
 ];
 
-const navigation = [
-  { hash: "produkty", label: "Produkty" },
-  { hash: "obszary", label: "Obszary" },
-  { hash: "produkty", label: "Kontakt" },
-];
+const navigation = [{ hash: "produkty", label: "Produkty" }];
 
 export function SiteHeader() {
   return (
@@ -49,7 +45,7 @@ export function SiteHeader() {
         >
           OfferCloud<span className="text-emerald-300">_</span>
         </Link>
-        <nav className="flex items-center gap-5 text-sm text-zinc-300">
+        <nav className="flex items-center gap-8 text-sm text-zinc-300">
           <ContactCtaButton
             data={{
               source: "Header (mobile)",
@@ -64,7 +60,7 @@ export function SiteHeader() {
             <Link
               key={`${item.hash}-${item.label}`}
               href={`/#${item.hash}`}
-              className="hidden transition hover:text-white md:inline-flex"
+              className="hidden font-semibold transition hover:text-white md:inline-flex"
             >
               {item.label}
             </Link>
@@ -72,11 +68,11 @@ export function SiteHeader() {
           <ContactCtaButton
             data={{
               source: "Header CTA",
-              subject: "Umów rozmowę — OfferCloud",
+              subject: "Kontakt — OfferCloud",
             }}
-            className="hidden rounded-full bg-emerald-300 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200 sm:inline-flex"
+            className="hidden cursor-pointer rounded-full bg-emerald-300 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200 sm:inline-flex"
           >
-            Umów rozmowę
+            Skontaktuj się
           </ContactCtaButton>
         </nav>
       </div>

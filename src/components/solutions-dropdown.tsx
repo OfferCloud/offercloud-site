@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 
 type SolutionsDropdownItem = {
   href: string;
@@ -79,12 +80,10 @@ export function SolutionsDropdown({ items }: SolutionsDropdownProps) {
     >
       <summary
         aria-labelledby={titleId}
-        className="flex list-none cursor-pointer items-center gap-2 transition hover:text-white [&::-webkit-details-marker]:hidden"
+        className="flex list-none cursor-pointer items-center gap-2 font-semibold transition hover:text-white [&::-webkit-details-marker]:hidden"
       >
         <span id={titleId}>Rozwiązania</span>
-        <span className="text-xs text-zinc-500 transition group-open:rotate-180">
-          +
-        </span>
+        <ChevronDown className="h-4 w-4 text-zinc-500 transition group-open:rotate-180" />
       </summary>
 
       <div className="absolute right-0 top-full mt-3 min-w-72 rounded-2xl border border-white/10 bg-zinc-950 p-2 shadow-2xl shadow-black/30">
