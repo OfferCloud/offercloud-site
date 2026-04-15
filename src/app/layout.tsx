@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import {
+  ContactModalForm,
+  ContactModalFormProvider,
+} from "@/components/contact-modal-form";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,7 +25,8 @@ export const metadata: Metadata = {
     default: "OfferCloud",
     template: "%s · OfferCloud",
   },
-  description: "OfferCloud — strona produktowa (Next.js, Tailwind CSS, Vercel).",
+  description:
+    "OfferCloud buduje platformy ofertowe dla serwisow informacyjnych, nieruchomosci i motoryzacji.",
 };
 
 export default function RootLayout({
@@ -30,7 +39,16 @@ export default function RootLayout({
       lang="pl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full bg-zinc-950 text-zinc-50">
+        <ContactModalFormProvider>
+          <div className="flex min-h-full flex-col">
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </div>
+          <ContactModalForm />
+        </ContactModalFormProvider>
+      </body>
     </html>
   );
 }

@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -22,5 +32,103 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes oc-pop {
+  0%,
+  75%,
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  10% {
+    transform: scale(1.035);
+    box-shadow: 0 18px 50px rgba(16, 185, 129, 0.12);
+    background-color: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.45);
+    margin-left: -12px;
+    margin-right: -12px;
+  }
+  34% {
+    transform: scale(1);
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.oc-seq-pop {
+  --oc-delay: 0s;
+  animation-name: oc-pop;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: var(--oc-delay);
+  will-change: transform;
+  transform-origin: center;
+}
+
+.oc-seq-pop-label {
+  color: rgba(255, 255, 255, 0.35);
+  transition: color 240ms ease;
+}
+
+.oc-seq-group:hover .oc-seq-pop,
+.oc-seq-group:hover .oc-seq-pop .oc-seq-pop-label {
+  animation-play-state: paused;
+}
+
+.oc-seq-pop:hover {
+  animation: none;
+  transform: scale(1.03);
+  box-shadow: 0 18px 50px rgba(16, 185, 129, 0.12);
+  background-color: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.45);
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.oc-seq-pop:hover .oc-seq-pop-label {
+  animation: none;
+  color: rgba(167, 243, 208, 0.95);
+}
+
+@keyframes oc-pop-label {
+  0%,
+  75%,
+  100% {
+    color: rgba(255, 255, 255, 0.35);
+  }
+  10% {
+    color: rgba(167, 243, 208, 0.95);
+  }
+  34% {
+    color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.oc-seq-pop .oc-seq-pop-label {
+  animation-name: oc-pop-label;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-delay: var(--oc-delay);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oc-seq-pop {
+    animation: none;
+  }
+  .oc-seq-pop .oc-seq-pop-label {
+    animation: none;
+  }
 }
