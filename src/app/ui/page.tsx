@@ -350,9 +350,8 @@ function SwatchCard({
 export default function UiPage() {
   return (
     <div className="relative overflow-hidden bg-white dark:bg-zinc-950">
-      <div className="absolute inset-x-0 top-0 -z-10 h-176 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.18),transparent_34%),radial-gradient(circle_at_80%_8%,rgba(59,130,246,0.12),transparent_26%)]" />
-
-      <section className="border-b border-zinc-200 dark:border-white/10">
+      <section className="relative isolate border-b border-zinc-200 dark:border-white/10">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.18),transparent_34%),radial-gradient(circle_at_80%_8%,rgba(59,130,246,0.12),transparent_26%)]" />
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <p className="text-xs font-semibold uppercase tracking-[0.34em] text-emerald-600 dark:text-emerald-300">
             OfferCloud UI

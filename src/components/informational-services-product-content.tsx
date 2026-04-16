@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Banknote, Server, Users, UserCheck, MessageSquare, Share2, Search, ImageIcon } from "lucide-react";
+import { Banknote, Server, Users, UserCheck, MessageSquare, Share2, Search } from "lucide-react";
 
 import { ContactCtaButton } from "@/components/contact-modal-form";
 
@@ -68,10 +68,6 @@ export function InformationalServicesProductContent() {
             nowoczesny marketplace do swojego serwisu, zatrzymujesz uzytkownikow na dluzej i
             zaczynasz zarabiac na lokalnym handlu. Bez obciazania wlasnego zespolu IT.
           </p>
-        </div>
-        <div className="relative z-10 mt-12 flex aspect-21/9 w-full flex-col items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/50 text-zinc-500 shadow-2xl">
-          <ImageIcon className="h-10 w-10 mb-3 opacity-50" />
-          <span className="text-sm font-medium tracking-widest uppercase">Miejsce na grafike / UI modulu ogloszen</span>
         </div>
       </section>
 

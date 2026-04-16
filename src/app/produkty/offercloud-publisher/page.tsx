@@ -116,9 +116,8 @@ export const metadata: Metadata = {
 export default function OfferCloudPublisherPage() {
   return (
     <div id="publisher" className="relative overflow-hidden bg-white dark:bg-zinc-950">
-      <div className="absolute inset-x-0 top-0 -z-10 h-176 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.18),transparent_34%),radial-gradient(circle_at_75%_15%,rgba(16,185,129,0.18),transparent_24%)]" />
-
-      <section className="border-b border-zinc-200 dark:border-white/10">
+      <section className="relative isolate border-b border-zinc-200 dark:border-white/10">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.18),transparent_34%),radial-gradient(circle_at_75%_15%,rgba(16,185,129,0.18),transparent_24%)]" />
         <div className="mx-auto grid max-w-6xl gap-14 px-6 py-20 sm:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <Link
@@ -260,7 +259,7 @@ export default function OfferCloudPublisherPage() {
         id="demo"
         className="mx-auto max-w-6xl scroll-mt-28 px-6 py-10 sm:py-14"
       >
-        <div className="oc-surface-panel rounded-[2.5rem] p-8 sm:p-12">
+        <div className="-mx-6 rounded-none border-0 bg-white px-5 py-8 dark:bg-zinc-900/75 sm:mx-0 sm:rounded-[2.5rem] sm:border sm:border-zinc-200 sm:p-12 dark:sm:border-white/10">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
               Demo
@@ -280,15 +279,15 @@ export default function OfferCloudPublisherPage() {
             </p>
           </div>
 
-          <div className="mt-5 text-center rounded-2xl border border-emerald-500/20 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100">
+          <div className="mt-5 text-center rounded-none border-0 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 sm:rounded-2xl sm:border sm:border-emerald-500/20 dark:bg-emerald-300/10 dark:text-emerald-100 dark:sm:border-emerald-300/20">
             DEMO START
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-3xl bg-white shadow-sm dark:shadow-none">
-            <OfferCloudPublisherDemo className="min-h-[720px] bg-white" />
+          <div className="mt-6 overflow-hidden rounded-none bg-transparent shadow-none sm:rounded-3xl sm:bg-white sm:shadow-sm dark:shadow-none">
+            <OfferCloudPublisherDemo className="min-h-[720px] bg-transparent sm:bg-white" />
           </div>
 
-          <div className="mt-5 text-center rounded-2xl border border-emerald-500/20 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100">
+          <div className="mt-5 text-center rounded-none border-0 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 sm:rounded-2xl sm:border sm:border-emerald-500/20 dark:bg-emerald-300/10 dark:text-emerald-100 dark:sm:border-emerald-300/20">
             DEMO END
           </div>
         </div>

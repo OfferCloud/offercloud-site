@@ -60,9 +60,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="relative overflow-hidden">
-      <div className="absolute inset-x-0 top-0 -z-10 h-144 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.16),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.14),transparent_24%)]" />
-
-      <section className="border-b border-zinc-200 dark:border-white/10">
+      <section className="relative isolate border-b border-zinc-200 dark:border-white/10">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.16),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.14),transparent_24%)]" />
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>

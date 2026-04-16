@@ -75,12 +75,17 @@ const ecosystemNodes = [
   },
 ] as const;
 
+function round(value: number, decimals = 3) {
+  const factor = 10 ** decimals;
+  return Math.round((value + Number.EPSILON) * factor) / factor;
+}
+
 function getPolarOffset(angle: number, radius: number) {
   const radians = (angle * Math.PI) / 180;
 
   return {
-    x: Math.cos(radians) * radius,
-    y: Math.sin(radians) * radius,
+    x: round(Math.cos(radians) * radius),
+    y: round(Math.sin(radians) * radius),
   };
 }
 
@@ -124,8 +129,8 @@ export function MarketplaceFlowIllustration({
               key={`flow-${node.id}`}
               x1={HUB_CENTER}
               y1={HUB_CENTER}
-              x2={HUB_CENTER + x}
-              y2={HUB_CENTER + y}
+              x2={round(HUB_CENTER + x)}
+              y2={round(HUB_CENTER + y)}
               className="flow-line"
               style={{ stroke: node.lineColor }}
             />
@@ -133,22 +138,25 @@ export function MarketplaceFlowIllustration({
         })}
       </svg>
 
-      {ecosystemNodes.map((node, index) => (
-        <div
-          key={node.id}
-          className={`ecosystem-node ecosystem-node-${index + 1}`}
-          style={
-            {
-              left: `calc(50% + ${getPolarOffset(node.angle, NODE_RADIUS_PERCENT).x}%)`,
-              top: `calc(50% + ${getPolarOffset(node.angle, NODE_RADIUS_PERCENT).y}%)`,
-              "--label-x": node.labelOffsetX,
-              "--label-y": node.labelOffsetY,
-              "--node-line-color": node.lineColor,
-              "--node-glow-color": node.glowColor,
-              "--node-shell-color": node.shellColor,
-            } as CSSProperties
-          }
-        >
+      {ecosystemNodes.map((node, index) => {
+        const { x, y } = getPolarOffset(node.angle, NODE_RADIUS_PERCENT);
+
+        return (
+          <div
+            key={node.id}
+            className={`ecosystem-node ecosystem-node-${index + 1}`}
+            style={
+              {
+                left: `calc(50% + ${x}%)`,
+                top: `calc(50% + ${y}%)`,
+                "--label-x": node.labelOffsetX,
+                "--label-y": node.labelOffsetY,
+                "--node-line-color": node.lineColor,
+                "--node-glow-color": node.glowColor,
+                "--node-shell-color": node.shellColor,
+              } as CSSProperties
+            }
+          >
           <div className="node-glow" />
           <div className="node-shell">
             <div className="node-core" />
@@ -156,8 +164,9 @@ export function MarketplaceFlowIllustration({
           <div className={`node-label ${node.labelClassName} text-zinc-600 dark:text-zinc-100/90`}>
             {node.label}
           </div>
-        </div>
-      ))}
+          </div>
+        );
+      })}
 
       <div className="hub absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2">
         <div className="hub-glow" />

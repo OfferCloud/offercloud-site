@@ -108,19 +108,6 @@ body {
   transform-origin: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  .oc-card-pop {
-    --oc-card-bg: rgba(0, 0, 0, 0.2);
-    --oc-card-border: rgba(255, 255, 255, 0.1);
-    --oc-card-shadow: 0 30px 120px rgba(0, 0, 0, 0.35);
-    --oc-card-bg-active: rgba(16, 185, 129, 0.08);
-    --oc-card-border-active: rgba(16, 185, 129, 0.45);
-    --oc-card-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
-    --oc-card-label: rgba(255, 255, 255, 0.35);
-    --oc-card-label-active: rgba(167, 243, 208, 0.95);
-  }
-}
-
 .dark .oc-card-pop {
   --oc-card-bg: rgba(0, 0, 0, 0.2);
   --oc-card-border: rgba(255, 255, 255, 0.1);

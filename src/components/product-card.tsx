@@ -1,4 +1,4 @@
-import { ArrowRight, ImageIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export type ProductCardData = {
@@ -22,10 +22,6 @@ export function ProductCard({ product }: ProductCardProps) {
       aria-label={`${product.title} — ${product.ctaLabel}`}
       className="group flex h-full flex-col rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:border-emerald-500/40 hover:bg-zinc-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-500/70 dark:border-white/10 dark:bg-white/5 dark:shadow-none dark:hover:border-emerald-300/40 dark:hover:bg-white/10 dark:focus-visible:outline-emerald-300/70"
     >
-      <div className="mb-6 flex aspect-video w-full items-center justify-center rounded-2xl border border-zinc-100 bg-zinc-100/50 dark:border-white/5 dark:bg-zinc-950/50">
-        <ImageIcon className="h-8 w-8 text-zinc-400 opacity-50 dark:text-zinc-600" />
-        <span className="sr-only">Thumbnail placeholder</span>
-      </div>
       <div className="flex items-center justify-between gap-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-300">
           {product.category}
