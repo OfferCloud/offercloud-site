@@ -5,6 +5,8 @@ import {
   ContactModalForm,
   ContactModalFormProvider,
 } from "@/components/contact-modal-form";
+import { ThemeInitScript } from "@/components/theme/theme-init-script";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -38,15 +40,21 @@ export default function RootLayout({
     <html
       lang="pl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full bg-zinc-950 text-zinc-50">
+      <head>
+        <ThemeInitScript />
+      </head>
+      <body className="min-h-full">
         <ContactModalFormProvider>
-          <div className="flex min-h-full flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-          <ContactModalForm />
+          <ThemeProvider>
+            <div className="flex min-h-full flex-col">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+            <ContactModalForm />
+          </ThemeProvider>
         </ContactModalFormProvider>
       </body>
     </html>

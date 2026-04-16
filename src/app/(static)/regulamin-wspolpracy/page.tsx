@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { NoCopy } from "@/components/no-copy";
+
 const pageTitle = "Regulamin współpracy";
 
 export const metadata: Metadata = {
@@ -11,21 +13,21 @@ export const metadata: Metadata = {
 
 export default function CooperationTermsPage() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden bg-white dark:bg-zinc-950">
       <div className="absolute inset-x-0 top-0 -z-10 h-144 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.14),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.10),transparent_24%)]" />
 
-      <section className="border-b border-white/10">
+      <section className="border-b border-zinc-200 dark:border-white/10">
         <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
           <Link
             href="/"
-            className="text-sm text-zinc-400 transition hover:text-white"
+            className="text-sm text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
           >
             Wróć na stronę główną
           </Link>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.34em] text-emerald-300">
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.34em] text-emerald-600 dark:text-emerald-300">
             OfferCloud Publisher
           </p>
-          <h1 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-4xl sm:leading-[1.1]">
+          <h1 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl sm:leading-[1.1]">
             Regulamin współpracy w ramach wdrożenia oraz utrzymania modułu
             ogłoszeniowego OfferCloud&nbsp;Publisher
           </h1>
@@ -33,12 +35,12 @@ export default function CooperationTermsPage() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
-        <div className="space-y-10 text-zinc-200">
+        <NoCopy className="space-y-10 text-zinc-800 dark:text-zinc-200">
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 1 Postanowienia ogólne
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 Niniejszy regulamin (dalej: „Regulamin”), określa warunki i
                 zasady współpracy OfferCloud sp. z o.o. z Partnerem w zakresie
@@ -67,21 +69,21 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 2 Definicje
             </h2>
-            <p className="text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <p className="text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               Terminom pisanym w niniejszym Regulaminie z wielkiej litery nadaje
               się znaczenie jak poniżej.
             </p>
-            <ol className="space-y-4 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-4 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-[lower-alpha]">
                 Regulamin – niniejszy dokument, dostępny również pod adresem{" "}
                 <Link
                   href="https://offercloud.pl/regulamin-wspolpracy/"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-emerald-200 underline decoration-emerald-300/40 underline-offset-4 transition hover:text-emerald-100"
+                  className="text-emerald-600 underline decoration-emerald-500/40 underline-offset-4 transition hover:text-emerald-700 dark:text-emerald-200 dark:decoration-emerald-300/40 dark:hover:text-emerald-100"
                 >
                   https://offercloud.pl/regulamin-wspolpracy/
                 </Link>
@@ -111,7 +113,7 @@ export default function CooperationTermsPage() {
                   href="https://panel.offercloud.pl/"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-emerald-200 underline decoration-emerald-300/40 underline-offset-4 transition hover:text-emerald-100"
+                  className="text-emerald-600 underline decoration-emerald-500/40 underline-offset-4 transition hover:text-emerald-700 dark:text-emerald-200 dark:decoration-emerald-300/40 dark:hover:text-emerald-100"
                 >
                   https://panel.offercloud.pl/
                 </Link>
@@ -165,10 +167,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 3 Zasady współpracy
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 Celem Serwisu OfferCloud jest umożliwienie użytkownikom Serwisu
                 zawierania umów, poprzez zapewnienie możliwości zamieszczania
@@ -234,10 +236,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 4 Licencja
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 OfferCloud wskazuje, że Serwis, w tym jego wygląd, treść,
                 zamieszczone logotypy i układ graficzny chronione są prawami
@@ -281,10 +283,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 5 Czas trwania współpracy
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 Umowa o współpracy jest zawierana na czas nieokreślony.
               </li>
@@ -300,9 +302,7 @@ export default function CooperationTermsPage() {
                 drogą elektroniczną odpowiednio na adres poczty elektronicznej
                 Partnera wskazaney w Panelu Klienta lub adres poczty
                 elektronicznej OfferCloud:{" "}
-                <span className="whitespace-nowrap">
-                  [email&nbsp;protected]
-                </span>
+                <span className="whitespace-nowrap">kontakt@offercloud.pl</span>
               </li>
               <li className="list-decimal">
                 OfferCloud ma prawo rozwiązania Umowy zawartej z Partnerem w
@@ -325,10 +325,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 6 Prowizja i zasady rozliczenia
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 Usługa OfferCloud świadczona za pośrednictwem Serwisu na rzecz
                 użytkowników oferujących towary, polegająca na umożliwieniu
@@ -340,12 +340,12 @@ export default function CooperationTermsPage() {
                 świadczonych przez OfferCloud na rzecz użytkowników Serwisu i
                 jest wskazana w Cenniku dostępnym pod adresem{" "}
                 <Link
-                  href="https://offercloud.pl/cennik/"
+                  href="https://offercloud.pl/publisher-cennik/"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-emerald-200 underline decoration-emerald-300/40 underline-offset-4 transition hover:text-emerald-100"
+                  className="text-emerald-600 underline decoration-emerald-500/40 underline-offset-4 transition hover:text-emerald-700 dark:text-emerald-200 dark:decoration-emerald-300/40 dark:hover:text-emerald-100"
                 >
-                  https://offercloud.pl/cennik/
+                  https://offercloud.pl/publisher-cennik/
                 </Link>
                 .
               </li>
@@ -417,9 +417,7 @@ export default function CooperationTermsPage() {
                 106n OfferCloud wyraża zgodę na przesyłanie przez Partnera
                 faktur, duplikatów tych faktur oraz ich korekt, w formie
                 elektronicznej przez Partnera. Faktury należy przesyłać na adres{" "}
-                <span className="whitespace-nowrap">
-                  [email&nbsp;protected]
-                </span>{" "}
+                <span className="whitespace-nowrap">kontakt@offercloud.pl</span>{" "}
                 lub za pośrednictwem dedykowanego narzędzia w Panelu Klienta.
               </li>
               <li className="list-decimal">
@@ -432,10 +430,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 7 Wsparcie techniczne
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 OfferCloud zapewnia bieżące utrzymanie Serwisu, w tym
                 dokonywanie wszystkich czynności technicznych niezbędnych do
@@ -445,18 +443,16 @@ export default function CooperationTermsPage() {
               <li className="list-decimal">
                 Zgłoszenia nieprawidłowości w działaniu Serwisu należy dokonywać
                 drogą mailową na adres:{" "}
-                <span className="whitespace-nowrap">
-                  [email&nbsp;protected]
-                </span>
+                <span className="whitespace-nowrap">support@offercloud.pl</span>
               </li>
             </ol>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 8 Poufność
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 OfferCloud oraz Partner zobowiązują się zachować w tajemnicy
                 wszelkie informacje techniczne, technologiczne, ekonomiczne,
@@ -523,10 +519,10 @@ export default function CooperationTermsPage() {
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 9 Ochrona danych osobowych
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 OfferCloud oraz Partner zobowiązują się do ochrony danych
                 osobowych udostępnianych wzajemnie w związku z wykonaniem Umowy
@@ -560,18 +556,16 @@ export default function CooperationTermsPage() {
                 Za realizację zadań, o których mowa w art. 39 RODO z
                 uwzględnieniem art. 38 ust. 6 RODO po stronie OfferCloud
                 odpowiada Inspektor Ochrony Danych, email:{" "}
-                <span className="whitespace-nowrap">
-                  [email&nbsp;protected]
-                </span>
+                <span className="whitespace-nowrap">kontakt@offercloud.pl</span>
               </li>
             </ol>
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
               § 10 Postanowienia końcowe
             </h2>
-            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8">
+            <ol className="space-y-3 pl-5 text-sm leading-7 text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-8">
               <li className="list-decimal">
                 W sprawach nieuregulowanych w niniejszym Regulaminie mają
                 zastosowanie przepisy prawa polskiego, w szczególności: Kodeksu
@@ -592,7 +586,7 @@ export default function CooperationTermsPage() {
               </li>
             </ol>
           </div>
-        </div>
+        </NoCopy>
       </section>
     </div>
   );

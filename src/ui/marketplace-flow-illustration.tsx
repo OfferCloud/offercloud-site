@@ -107,13 +107,13 @@ export function MarketplaceFlowIllustration({
           cx="210"
           cy="210"
           r="118"
-          className="orbit-ring orbit-ring-outer"
+          className="orbit-ring orbit-ring-outer stroke-emerald-500/20 dark:stroke-emerald-400/20"
         />
         <circle
           cx="210"
           cy="210"
           r="156"
-          className="orbit-ring orbit-ring-soft"
+          className="orbit-ring orbit-ring-soft stroke-zinc-400/20 dark:stroke-zinc-400/10"
         />
 
         {ecosystemNodes.map((node) => {
@@ -153,7 +153,7 @@ export function MarketplaceFlowIllustration({
           <div className="node-shell">
             <div className="node-core" />
           </div>
-          <div className={`node-label ${node.labelClassName}`}>
+          <div className={`node-label ${node.labelClassName} text-zinc-600 dark:text-zinc-100/90`}>
             {node.label}
           </div>
         </div>
@@ -166,8 +166,8 @@ export function MarketplaceFlowIllustration({
         <div className="hub-core">
           <div className="hub-center-dot" />
           <div className="hub-copy">
-            <span className="hub-kicker">OfferCloud</span>
-            <span className="hub-title">Marketplace</span>
+            <span className="hub-kicker text-emerald-600 dark:text-emerald-300/90">OfferCloud</span>
+            <span className="hub-title text-zinc-900 dark:text-zinc-100/95">Marketplace</span>
           </div>
         </div>
       </div>
@@ -175,18 +175,15 @@ export function MarketplaceFlowIllustration({
       <style jsx>{`
         .orbit-ring {
           fill: none;
-          stroke: rgba(255, 255, 255, 0.06);
         }
 
         .orbit-ring-outer {
           stroke-dasharray: 4 10;
           opacity: 0.55;
-          stroke: rgba(52, 211, 153, 0.16);
         }
 
         .orbit-ring-soft {
           opacity: 0.3;
-          stroke: rgba(167, 139, 250, 0.14);
         }
 
         .flow-line {
@@ -275,7 +272,6 @@ export function MarketplaceFlowIllustration({
           font-weight: 600;
           letter-spacing: 0.07em;
           text-transform: uppercase;
-          color: rgba(244, 244, 245, 0.88);
           white-space: nowrap;
           pointer-events: none;
           line-height: 1.2;
@@ -378,13 +374,11 @@ export function MarketplaceFlowIllustration({
           font-weight: 700;
           letter-spacing: 0.26em;
           text-transform: uppercase;
-          color: rgba(110, 231, 183, 0.92);
         }
 
         .hub-title {
           font-size: 0.84rem;
           font-weight: 700;
-          color: rgba(244, 244, 245, 0.95);
           letter-spacing: 0.02em;
         }
 

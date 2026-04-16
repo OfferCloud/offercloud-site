@@ -62,17 +62,17 @@ export default function Home() {
     <div className="relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 -z-10 h-144 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.16),transparent_34%),radial-gradient(circle_at_80%_10%,rgba(59,130,246,0.14),transparent_24%)]" />
 
-      <section className="border-b border-white/10">
+      <section className="border-b border-zinc-200 dark:border-white/10">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-emerald-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-emerald-600 dark:text-emerald-300">
                 OfferCloud
               </p>
-              <h1 className="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-white sm:text-6xl sm:leading-[1.02]">
+              <h1 className="mt-6 max-w-5xl text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-6xl sm:leading-[1.02]">
                 Marketplace SaaS i&nbsp;dedykowane rozwiązania ofertowe
               </h1>
-              <p className="mt-8 max-w-3xl text-lg leading-8 text-zinc-300">
+              <p className="mt-8 max-w-3xl text-lg leading-8 text-zinc-600 dark:text-zinc-300">
                 Projektujemy i dostarczamy produkty ofertowe dla wydawców,
                 operatorów marketplace oraz branż motoryzacji, nieruchomości czy
                 job-boardów. Łączymy gotowe wdrożenia SaaS,{" "}
@@ -83,7 +83,7 @@ export default function Home() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href="#produkty"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-300 px-6 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-300 dark:text-zinc-950 dark:hover:bg-emerald-200"
                 >
                   Zobacz produkty
                   <ArrowRight className="h-4 w-4" />
@@ -93,7 +93,7 @@ export default function Home() {
                     source: "Home hero",
                     subject: "Porozmawiajmy o wdrożeniu — OfferCloud",
                   }}
-                  className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                  className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-6 py-3.5 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-50 dark:border-white/15 dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
                 >
                   Porozmawiajmy o wdrozeniu
                 </ContactCtaButton>
@@ -108,7 +108,7 @@ export default function Home() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-zinc-200"
+                    className="oc-surface-subtle rounded-3xl px-5 py-4 text-sm text-zinc-600 dark:text-zinc-200"
                   >
                     {item}
                   </div>
@@ -130,19 +130,19 @@ export default function Home() {
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-600 dark:text-emerald-300">
               Produkty
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
               Trzy produkty, trzy różne scenariusze wzrostu.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-zinc-300">
+            <p className="mt-5 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               Każdy produkt jest zbudowany pod inny rynek, ale wszystkie
               korzystają z tego samego podejścia: szybkie wdrożenie, porządek w
               danych i realna wartość biznesowa.
             </p>
           </div>
-          <div className="rounded-full border border-white/10 px-4 py-2 text-sm text-zinc-300">
+          <div className="rounded-full border border-zinc-200 px-4 py-2 text-sm text-zinc-600 dark:border-white/10 dark:text-zinc-300">
             SaaS + marketplace + white-label
           </div>
         </div>
@@ -181,15 +181,15 @@ export default function Home() {
             return (
               <article
                 key={item.title}
-                className="rounded-4xl border border-white/10 bg-zinc-900/70 p-7"
+                className="rounded-4xl border border-zinc-200 bg-white p-7 shadow-sm dark:border-white/10 dark:bg-zinc-900/70 dark:shadow-none"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/6 text-emerald-200">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-white/6 dark:text-emerald-200">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-xl font-semibold text-white">
+                <h3 className="mt-6 text-xl font-semibold text-zinc-900 dark:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-zinc-400">
+                <p className="mt-4 text-sm leading-7 text-zinc-600 dark:text-zinc-400">
                   {item.description}
                 </p>
               </article>
@@ -199,17 +199,17 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-8 pt-4">
-        <div className="rounded-[2.5rem] border border-white/10 bg-linear-to-br from-white/8 to-emerald-300/8 p-8 sm:p-12">
+        <div className="rounded-[2.5rem] border border-zinc-200 bg-linear-to-br from-zinc-50 to-emerald-50 p-8 sm:p-12 dark:border-white/10 dark:from-white/8 dark:to-emerald-300/8">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
                 OfferCloud
               </p>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
                 Szukasz gotowego produktu marketplace albo modułowego SaaS pod
                 swój rynek?
               </h2>
-              <p className="mt-6 text-lg leading-8 text-zinc-300">
+              <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
                 Opisz model biznesowy, a dobierzemy scenariusz: media,
                 nieruchomości, motoryzacja albo rozwiązanie zbliżone do jednego
                 z tych kierunków.
@@ -221,7 +221,7 @@ export default function Home() {
                 source: "Home CTA (sekcja)",
                 subject: "Kontakt — OfferCloud",
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-300 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-300 dark:text-zinc-950 dark:hover:bg-emerald-200"
             >
               Przejdź do kontaktu
               <ArrowRight className="h-4 w-4" />

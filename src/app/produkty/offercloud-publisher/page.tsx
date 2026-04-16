@@ -115,31 +115,31 @@ export const metadata: Metadata = {
 
 export default function OfferCloudPublisherPage() {
   return (
-    <div id="publisher" className="relative overflow-hidden">
+    <div id="publisher" className="relative overflow-hidden bg-white dark:bg-zinc-950">
       <div className="absolute inset-x-0 top-0 -z-10 h-176 bg-[radial-gradient(circle_at_top_left,rgba(52,211,153,0.18),transparent_34%),radial-gradient(circle_at_75%_15%,rgba(16,185,129,0.18),transparent_24%)]" />
 
-      <section className="border-b border-white/10">
+      <section className="border-b border-zinc-200 dark:border-white/10">
         <div className="mx-auto grid max-w-6xl gap-14 px-6 py-20 sm:py-28 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <Link
               href="/"
-              className="text-sm text-zinc-400 transition hover:text-white"
+              className="text-sm text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
               Wróć na stronę główną
             </Link>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.34em] text-emerald-300">
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.34em] text-emerald-600 dark:text-emerald-300">
               OfferCloud Publisher
             </p>
-            <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight text-white sm:text-6xl sm:leading-[1.02]">
+            <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-6xl sm:leading-[1.02]">
               Lokalny marketplace dla wydawcy, bez budowy własnego systemu
               ogłoszeń.
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-300">
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               Osadzasz produkt w swoim serwisie, utrzymujesz ruch w swojej
               domenie i otwierasz nowy kanał monetyzacji. OfferCloud bierze na
               siebie technologię, utrzymanie i obsługę operacyjną.
             </p>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400">
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-500 dark:text-zinc-400">
               Dla partnera (wydawcy) produkt jest bezpłatny.
             </p>
 
@@ -148,7 +148,7 @@ export default function OfferCloudPublisherPage() {
                 href={publisherSignupHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-300 px-6 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-300 dark:text-zinc-950 dark:hover:bg-emerald-200"
               >
                 Zarejestruj się jako Partner za 0 zł
                 <ArrowRight className="h-4 w-4" />
@@ -157,16 +157,16 @@ export default function OfferCloudPublisherPage() {
                 href="https://panel.offercloud.pl"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+                className="inline-flex items-center justify-center rounded-full border border-zinc-200 px-6 py-3.5 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-50 dark:border-white/15 dark:text-white dark:hover:border-white/30 dark:hover:bg-white/5"
               >
                 Panel
               </Link>
             </div>
 
-            <ul className="mt-10 grid gap-3 text-sm text-zinc-200 sm:grid-cols-2">
+            <ul className="mt-10 grid gap-3 text-sm text-zinc-700 dark:text-zinc-200 sm:grid-cols-2">
               {heroHighlights.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-emerald-300" />
+                  <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-500 dark:bg-emerald-300" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -175,7 +175,7 @@ export default function OfferCloudPublisherPage() {
 
           <div className="relative">
             <div className="absolute inset-0 bg-emerald-400/10 blur-3xl" />
-            <div className="oc-seq-group relative flex flex-col gap-3">
+            <div className="oc-card-group relative flex flex-col gap-3">
               {[
                 {
                   label: "Dlaczego to działa",
@@ -203,15 +203,15 @@ export default function OfferCloudPublisherPage() {
               ].map((item, index) => (
                 <div
                   key={item.label}
-                  className="oc-seq-pop rounded-3xl border border-white/10 bg-black/20 px-6 py-5 shadow-[0_30px_120px_rgba(0,0,0,0.35)]"
+                  className="oc-card-pop rounded-3xl border border-zinc-200 bg-white px-6 py-5 shadow-xl dark:border-white/10 dark:bg-black/20 dark:shadow-[0_30px_120px_rgba(0,0,0,0.35)]"
                   style={
                     { "--oc-delay": `${index * 1.2}s` } as React.CSSProperties
                   }
                 >
-                  <p className="oc-seq-pop-label text-xs uppercase tracking-[0.22em]">
+                  <p className="oc-card-label text-xs uppercase tracking-[0.22em]">
                     {item.label}
                   </p>
-                  <p className="mt-2 text-base leading-7 text-zinc-200">
+                  <p className="mt-2 text-base leading-7 text-zinc-600 dark:text-zinc-200">
                     {item.value}
                   </p>
                 </div>
@@ -223,10 +223,10 @@ export default function OfferCloudPublisherPage() {
 
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
             Najważniejsze korzyści
           </p>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-5xl">
             Strona informacyjna dostaje nowy produkt, a nie kolejny koszt do
             utrzymania.
           </h2>
@@ -239,15 +239,15 @@ export default function OfferCloudPublisherPage() {
             return (
               <article
                 key={item.title}
-                className="border-t border-white/10 pt-5"
+                className="border-t border-zinc-200 pt-5 dark:border-white/10"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-300/10 text-emerald-200">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 dark:bg-emerald-300/10 dark:text-emerald-200">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-white">
+                <h3 className="mt-5 text-xl font-semibold text-zinc-900 dark:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-400">
+                <p className="mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400">
                   {item.description}
                 </p>
               </article>
@@ -260,35 +260,35 @@ export default function OfferCloudPublisherPage() {
         id="demo"
         className="mx-auto max-w-6xl scroll-mt-28 px-6 py-10 sm:py-14"
       >
-        <div className="rounded-[2.5rem] border border-white/10 bg-zinc-900/75 p-8 sm:p-12">
+        <div className="oc-surface-panel rounded-[2.5rem] p-8 sm:p-12">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
               Demo
             </p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
               Live demo OfferCloud Publisher
             </h2>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">
+            <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               Ten fragment pokazuje realny sposób osadzenia modułu na stronie
               partnera. Powinien się znajdować na oddzielnej podstronie,
               pomiedzy nagłówkiem i stopką, aby moduł miał swój kontekst danego
               serwisu informacyjnego.{" "}
             </p>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">
+            <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               Od zaznaczonego miejsca treść jest dynamicznie generowana przez
               OfferCloud Publisher.
             </p>
           </div>
 
-          <div className="mt-5 text-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm text-emerald-100">
+          <div className="mt-5 text-center rounded-2xl border border-emerald-500/20 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100">
             DEMO START
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-4xl border border-white/10 bg-white">
+          <div className="mt-6 overflow-hidden rounded-3xl bg-white shadow-sm dark:shadow-none">
             <OfferCloudPublisherDemo className="min-h-[720px] bg-white" />
           </div>
 
-          <div className="mt-5 text-center rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm text-emerald-100">
+          <div className="mt-5 text-center rounded-2xl border border-emerald-500/20 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-300/20 dark:bg-emerald-300/10 dark:text-emerald-100">
             DEMO END
           </div>
         </div>
@@ -300,34 +300,34 @@ export default function OfferCloudPublisherPage() {
       >
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="max-w-xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
               Jak to działa
             </p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
               Trzy krótkie kroki do uruchomienia lokalnego marketplace.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">
+            <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               To ma być szybki ruch po stronie redakcji i gotowy produkt po
               stronie technologii.
             </p>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">
+            <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
               Wdrożenie zajmuje 5 minut
             </p>
           </div>
 
           <ol className="space-y-8">
             {launchSteps.map((step, index) => (
-              <li key={step.title} className="border-l border-white/10 pl-6">
+              <li key={step.title} className="border-l border-zinc-200 pl-6 dark:border-white/10">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-emerald-300/25 bg-emerald-300/10 text-sm font-semibold text-emerald-200">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-emerald-500/25 bg-emerald-50 text-sm font-semibold text-emerald-700 dark:border-emerald-300/25 dark:bg-emerald-300/10 dark:text-emerald-200">
                     0{index + 1}
                   </div>
-                  <Workflow className="h-5 w-5 text-emerald-300" />
+                  <Workflow className="h-5 w-5 text-emerald-600 dark:text-emerald-300" />
                 </div>
-                <h3 className="mt-4 text-xl font-semibold text-white">
+                <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-white">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-zinc-400">
+                <p className="mt-3 text-sm leading-7 text-zinc-600 dark:text-zinc-400">
                   {step.description}
                 </p>
               </li>
@@ -338,10 +338,10 @@ export default function OfferCloudPublisherPage() {
 
       <section className="mx-auto max-w-4xl px-6 py-14 sm:py-20">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
             FAQ
           </p>
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
             Najczęstsze pytania przed startem.
           </h2>
         </div>
@@ -350,15 +350,15 @@ export default function OfferCloudPublisherPage() {
           {faqItems.map((item) => (
             <details
               key={item.question}
-              className="group rounded-3xl border border-white/10 bg-white/4 px-6 py-5 open:bg-white/6"
+              className="group rounded-3xl border border-zinc-200 bg-white px-6 py-5 open:bg-zinc-50/50 dark:border-white/10 dark:bg-white/4 dark:open:bg-white/6"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-white [&::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-zinc-900 dark:text-white [&::-webkit-details-marker]:hidden">
                 {item.question}
-                <span className="text-zinc-500 transition group-open:rotate-45">
+                <span className="text-zinc-400 transition group-open:rotate-45 dark:text-zinc-500">
                   +
                 </span>
               </summary>
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-400">
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-zinc-600 dark:text-zinc-400">
                 {item.answer}
               </p>
             </details>
@@ -367,17 +367,17 @@ export default function OfferCloudPublisherPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-8 pt-6">
-        <div className="rounded-[2.5rem] border border-white/10 bg-linear-to-br from-white/8 to-emerald-300/8 p-8 sm:p-12">
+        <div className="rounded-[2.5rem] border border-zinc-200 bg-linear-to-br from-zinc-50 to-emerald-50 p-8 sm:p-12 dark:border-white/10 dark:from-white/8 dark:to-emerald-300/8">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-300">
                 Dla wydawców, którzy chcą sprzedawać
               </p>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
                 Uruchom marketplace, który wygląda jak część Twojego serwisu i
                 pracuje na Twój biznes.
               </h2>
-              <p className="mt-6 text-lg leading-8 text-zinc-300">
+              <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-300">
                 Jeśli chcesz szybko sprawdzić ten scenariusz u siebie, zacznij
                 od rejestracji w panelu Partnera i uruchom pierwszy marketplace.
               </p>
@@ -387,7 +387,7 @@ export default function OfferCloudPublisherPage() {
               href={publisherSignupHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-300 px-7 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600 dark:bg-emerald-300 dark:text-zinc-950 dark:hover:bg-emerald-200"
             >
               Zarejestruj się i uruchom moduł ogłoszeń
               <ArrowRight className="h-4 w-4" />

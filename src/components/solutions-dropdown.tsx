@@ -80,33 +80,33 @@ export function SolutionsDropdown({ items }: SolutionsDropdownProps) {
     >
       <summary
         aria-labelledby={titleId}
-        className="flex list-none cursor-pointer items-center gap-2 font-semibold transition hover:text-white [&::-webkit-details-marker]:hidden"
+        className="flex list-none cursor-pointer items-center gap-2 font-semibold transition hover:text-zinc-900 dark:hover:text-white [&::-webkit-details-marker]:hidden"
       >
         <span id={titleId}>Rozwiązania</span>
-        <ChevronDown className="h-4 w-4 text-zinc-500 transition group-open:rotate-180" />
+        <ChevronDown className="h-4 w-4 text-zinc-400 transition group-open:rotate-180 dark:text-zinc-500" />
       </summary>
 
-      <div className="absolute right-0 top-full mt-3 min-w-72 rounded-2xl border border-white/10 bg-zinc-950 p-2 shadow-2xl shadow-black/30">
+      <div className="absolute right-0 top-full mt-3 min-w-72 rounded-2xl border border-zinc-200 bg-white p-2 shadow-xl shadow-black/5 dark:border-white/10 dark:bg-zinc-950 dark:shadow-2xl dark:shadow-black/30">
         {items.map((item) => (
           <div
             key={item.href}
-            className="rounded-xl px-4 py-3 transition hover:bg-white/5"
+            className="rounded-xl px-4 py-3 transition hover:bg-zinc-50 dark:hover:bg-white/5"
           >
             <Link href={item.href} onClick={close} className="block">
-              <p className="text-sm font-semibold text-white">{item.title}</p>
-              <p className="mt-1 text-xs leading-5 text-zinc-400">
+              <p className="text-sm font-semibold text-zinc-900 dark:text-white">{item.title}</p>
+              <p className="mt-1 text-xs leading-5 text-zinc-600 dark:text-zinc-400">
                 {item.subtitle}
               </p>
             </Link>
 
             {item.auxiliaryLinks?.length ? (
-              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 border-t border-white/10 pt-3">
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 border-t border-zinc-100 pt-3 dark:border-white/10">
                 {item.auxiliaryLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={close}
-                    className="text-xs font-medium text-emerald-200 transition hover:text-white"
+                    className="text-xs font-medium text-emerald-600 transition hover:text-emerald-700 dark:text-emerald-200 dark:hover:text-white"
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noreferrer" : undefined}
                   >

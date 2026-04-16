@@ -65,8 +65,10 @@ export async function sendEmailAction(prevState: unknown, formData: FormData) {
       await transporter.verify();
     }
 
-    const subject =
-      subjectStr || `Nowa wiadomość od ${name} przez formularz kontaktowy`;
+    // Include sender info in the subject line for readability in inboxes.
+    const baseSubject =
+      subjectStr || "Wiadomość przez formularz kontaktowy";
+    const subject = `${baseSubject} - ${name} (${email})`;
 
     // Email options
     const mailOptions = {

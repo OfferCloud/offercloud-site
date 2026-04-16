@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 html {
   scroll-behavior: smooth;
@@ -11,8 +12,18 @@ html {
 }
 
 :root {
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
+
+  --oc-pop-bg: rgba(255, 255, 255, 1);
+  --oc-pop-border: rgba(228, 228, 231, 1); /* zinc-200 */
+  --oc-pop-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+  --oc-pop-bg-active: rgba(236, 253, 245, 1); /* emerald-50 */
+  --oc-pop-border-active: rgba(16, 185, 129, 0.45);
+  
+  --oc-pop-label: rgba(113, 113, 122, 1); /* zinc-500 */
+  --oc-pop-label-active: rgba(5, 150, 105, 1); /* emerald-600 */
 }
 
 @theme inline {
@@ -26,7 +37,31 @@ html {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --oc-pop-bg: rgba(0, 0, 0, 0.2);
+    --oc-pop-border: rgba(255, 255, 255, 0.1);
+    --oc-pop-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+    --oc-pop-bg-active: rgba(16, 185, 129, 0.08);
+    --oc-pop-border-active: rgba(16, 185, 129, 0.45);
+
+    --oc-pop-label: rgba(255, 255, 255, 0.35);
+    --oc-pop-label-active: rgba(167, 243, 208, 0.95);
   }
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  --oc-pop-bg: rgba(0, 0, 0, 0.2);
+  --oc-pop-border: rgba(255, 255, 255, 0.1);
+  --oc-pop-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+  --oc-pop-bg-active: rgba(16, 185, 129, 0.08);
+  --oc-pop-border-active: rgba(16, 185, 129, 0.45);
+
+  --oc-pop-label: rgba(255, 255, 255, 0.35);
+  --oc-pop-label-active: rgba(167, 243, 208, 0.95);
 }
 
 body {
@@ -35,38 +70,48 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-@keyframes oc-pop {
+@keyframes oc-card-pop {
   0%,
   75%,
   100% {
     transform: scale(1);
-    box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--oc-card-shadow);
+    background-color: var(--oc-card-bg);
+    border-color: var(--oc-card-border);
     margin-left: 0;
     margin-right: 0;
   }
   10% {
     transform: scale(1.035);
-    box-shadow: 0 18px 50px rgba(16, 185, 129, 0.12);
-    background-color: rgba(16, 185, 129, 0.08);
-    border-color: rgba(16, 185, 129, 0.45);
+    box-shadow: var(--oc-card-shadow-active);
+    background-color: var(--oc-card-bg-active);
+    border-color: var(--oc-card-border-active);
     margin-left: -12px;
     margin-right: -12px;
   }
   34% {
     transform: scale(1);
-    box-shadow: none;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--oc-card-shadow);
+    background-color: var(--oc-card-bg);
+    border-color: var(--oc-card-border);
     margin-left: 0;
     margin-right: 0;
   }
 }
 
-.oc-seq-pop {
+.oc-card-pop {
+  /* Light mode defaults */
+  --oc-card-bg: #ffffff;
+  --oc-card-border: #e4e4e7;
+  --oc-card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --oc-card-bg-active: #ecfdf5;
+  --oc-card-border-active: rgba(16, 185, 129, 0.45);
+  --oc-card-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+  --oc-card-label: #71717a;
+  --oc-card-label-active: #059669;
+
   --oc-delay: 0s;
-  animation-name: oc-pop;
+  animation-name: oc-card-pop;
   animation-duration: 6s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -76,47 +121,71 @@ body {
   transform-origin: center;
 }
 
-.oc-seq-pop-label {
-  color: rgba(255, 255, 255, 0.35);
+@media (prefers-color-scheme: dark) {
+  .oc-card-pop {
+    --oc-card-bg: rgba(0, 0, 0, 0.2);
+    --oc-card-border: rgba(255, 255, 255, 0.1);
+    --oc-card-shadow: 0 30px 120px rgba(0, 0, 0, 0.35);
+    --oc-card-bg-active: rgba(16, 185, 129, 0.08);
+    --oc-card-border-active: rgba(16, 185, 129, 0.45);
+    --oc-card-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+    --oc-card-label: rgba(255, 255, 255, 0.35);
+    --oc-card-label-active: rgba(167, 243, 208, 0.95);
+  }
+}
+
+.dark .oc-card-pop {
+  --oc-card-bg: rgba(0, 0, 0, 0.2);
+  --oc-card-border: rgba(255, 255, 255, 0.1);
+  --oc-card-shadow: 0 30px 120px rgba(0, 0, 0, 0.35);
+  --oc-card-bg-active: rgba(16, 185, 129, 0.08);
+  --oc-card-border-active: rgba(16, 185, 129, 0.45);
+  --oc-card-shadow-active: 0 18px 50px rgba(16, 185, 129, 0.12);
+  --oc-card-label: rgba(255, 255, 255, 0.35);
+  --oc-card-label-active: rgba(167, 243, 208, 0.95);
+}
+
+.oc-card-label {
+  color: var(--oc-card-label);
   transition: color 240ms ease;
 }
 
-.oc-seq-group:hover .oc-seq-pop,
-.oc-seq-group:hover .oc-seq-pop .oc-seq-pop-label {
+.oc-card-group:hover .oc-card-pop,
+.oc-card-group:hover .oc-card-pop .oc-card-label {
   animation-play-state: paused;
 }
 
-.oc-seq-pop:hover {
+.oc-card-pop:hover {
   animation: none;
   transform: scale(1.03);
-  box-shadow: 0 18px 50px rgba(16, 185, 129, 0.12);
-  background-color: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: var(--oc-card-shadow-active);
+  background-color: var(--oc-card-bg-active);
+  border-color: var(--oc-card-border-active);
   margin-left: -12px;
   margin-right: -12px;
 }
 
-.oc-seq-pop:hover .oc-seq-pop-label {
+.oc-card-pop:hover .oc-card-label {
   animation: none;
-  color: rgba(167, 243, 208, 0.95);
+  color: var(--oc-card-label-active);
 }
 
-@keyframes oc-pop-label {
+@keyframes oc-card-label-anim {
   0%,
   75%,
   100% {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--oc-card-label);
   }
   10% {
-    color: rgba(167, 243, 208, 0.95);
+    color: var(--oc-card-label-active);
   }
   34% {
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--oc-card-label);
   }
 }
 
-.oc-seq-pop .oc-seq-pop-label {
-  animation-name: oc-pop-label;
+.oc-card-pop .oc-card-label {
+  animation-name: oc-card-label-anim;
   animation-duration: 6s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -125,10 +194,27 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .oc-seq-pop {
+  .oc-card-pop,
+  .oc-card-pop .oc-card-label {
     animation: none;
   }
-  .oc-seq-pop .oc-seq-pop-label {
-    animation: none;
+}
+
+@layer utilities {
+  /* Shared surfaces: keep light mode bright, dark mode consistent */
+  .oc-surface-panel {
+    @apply border border-zinc-200 bg-white;
+  }
+
+  :where(html.dark) .oc-surface-panel {
+    @apply border-white/10 bg-zinc-900/75;
+  }
+
+  .oc-surface-subtle {
+    @apply border border-zinc-200 bg-zinc-50/50;
+  }
+
+  :where(html.dark) .oc-surface-subtle {
+    @apply border-white/10 bg-white/4;
   }
 }
