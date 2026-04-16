@@ -44,7 +44,8 @@ export function SiteHeader() {
           href="/"
           className="shrink-0 text-lg font-semibold tracking-[0.025em] text-zinc-900 dark:text-white"
         >
-          OfferCloud<span className="text-emerald-600 dark:text-emerald-300">_</span>
+          OfferCloud
+          <span className="text-emerald-600 dark:text-emerald-300">_</span>
         </Link>
         <nav className="flex items-center gap-8 text-sm text-zinc-600 dark:text-zinc-300">
           <ContactCtaButton
