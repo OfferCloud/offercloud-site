@@ -41,7 +41,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-4">
         <Link
           href="/"
-          className="shrink-0 text-lg font-semibold tracking-[0.05em] text-white"
+          className="shrink-0 text-lg font-semibold tracking-[0.025em] text-white"
         >
           OfferCloud<span className="text-emerald-300">_</span>
         </Link>

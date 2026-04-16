@@ -8,8 +8,10 @@ import {
   useId,
   useMemo,
   useState,
+  useActionState,
 } from "react";
-import { Building2, Mail, Send } from "lucide-react";
+import { Building2, Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { sendEmailAction } from "@/actions/send-email";
 
 export type ContactModalFormData = {
   source?: string;
@@ -25,10 +27,6 @@ type ContactModalFormContextValue = {
 
 const ContactModalFormContext =
   createContext<ContactModalFormContextValue | null>(null);
-
-function encodeMailto(value: string) {
-  return encodeURIComponent(value).replaceAll("%20", "+");
-}
 
 export function ContactModalFormProvider({
   children,
@@ -105,6 +103,8 @@ export function ContactModalForm() {
     [data?.subject],
   );
 
+  const [state, formAction, isPending] = useActionState(sendEmailAction, null);
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -128,26 +128,7 @@ export function ContactModalForm() {
     setEmail("");
     setPhone("");
     setMessage("");
-  }, [isOpen]);
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const body = [
-      `Imię i nazwisko: ${fullName}`,
-      `Email: ${email}`,
-      `Telefon: ${phone}`,
-      data?.source ? `Źródło: ${data.source}` : null,
-      "",
-      "Wiadomość:",
-      message,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    window.location.href = `mailto:support@offercloud.pl?subject=${encodeMailto(subject)}&body=${encodeMailto(body)}`;
-    close();
-  }
+  }, [isOpen, state?.success]); // Clear form when sent successfully
 
   if (!isOpen) return null;
 
@@ -185,80 +166,109 @@ export function ContactModalForm() {
                 Napisz do nas
               </h2>
               <p className="mt-4 max-w-xl text-lg leading-8 text-zinc-300">
-                Opisz krótko, czego potrzebujesz, a my wygenerujemy
-                gotową wiadomość z Twojej poczty do{" "}
-                <span className="font-medium text-white">support@offercloud.pl</span>.
+                Opisz krótko, czego potrzebujesz, a my odpowiemy na Twoją wiadomość w ciągu 24 godzin.
               </p>
             </div>
 
-            <form
-              aria-labelledby={titleId}
-              className="mt-10 grid gap-6 sm:grid-cols-2"
-              onSubmit={handleSubmit}
-            >
-              <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-1">
-                Imię i nazwisko
-                <input
-                  required
-                  value={fullName}
-                  onChange={(event) => setFullName(event.target.value)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
-                  placeholder="Jan Kowalski"
-                  autoComplete="name"
-                />
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-1">
-                Email
-                <input
-                  required
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
-                  placeholder="jan@firma.pl"
-                  autoComplete="email"
-                />
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-2">
-                Numer telefonu
-                <input
-                  required
-                  value={phone}
-                  onChange={(event) => setPhone(event.target.value)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
-                  placeholder="+48 600 000 000"
-                  autoComplete="tel"
-                  inputMode="tel"
-                />
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-2">
-                Wiadomość
-                <textarea
-                  required
-                  rows={6}
-                  value={message}
-                  onChange={(event) => setMessage(event.target.value)}
-                  className="rounded-3xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
-                  placeholder="Opisz, w czym możemy Ci pomóc..."
-                />
-              </label>
-
-              <div className="flex flex-col gap-4 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm leading-6 text-zinc-400">
-                  Po kliknięciu otworzy się Twój klient poczty.
-                </p>
+            {state?.success ? (
+              <div className="mt-10 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-8 text-center">
+                <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-400" />
+                <h3 className="mt-4 text-xl font-semibold text-white">Dziękujemy!</h3>
+                <p className="mt-2 text-emerald-200">{state.message}</p>
                 <button
-                  type="submit"
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-emerald-300 px-6 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
+                  type="button"
+                  onClick={close}
+                  className="mt-6 inline-flex shrink-0 items-center justify-center rounded-full bg-emerald-300 px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200"
                 >
-                  Wyślij wiadomość
-                  <Send className="h-4 w-4" />
+                  Zamknij
                 </button>
               </div>
-            </form>
+            ) : (
+              <form
+                action={formAction}
+                aria-labelledby={titleId}
+                className="mt-10 grid gap-6 sm:grid-cols-2"
+              >
+                {/* Ukryte pola do przekazania danych z kontekstu formularza */}
+                <input type="hidden" name="subject" value={subject} />
+                {data?.source && <input type="hidden" name="source" value={data.source} />}
+
+                {state?.error && (
+                  <div className="sm:col-span-2 flex items-center gap-3 rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-red-200">
+                    <AlertCircle className="h-5 w-5 shrink-0" />
+                    <p className="text-sm">{state.error}</p>
+                  </div>
+                )}
+
+                <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-1">
+                  Imię i nazwisko
+                  <input
+                    required
+                    name="fullName"
+                    value={fullName}
+                    onChange={(event) => setFullName(event.target.value)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
+                    placeholder="Jan Kowalski"
+                    autoComplete="name"
+                  />
+                </label>
+
+                <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-1">
+                  Email
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
+                    placeholder="jan@firma.pl"
+                    autoComplete="email"
+                  />
+                </label>
+
+                <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-2">
+                  Numer telefonu
+                  <input
+                    required
+                    name="phone"
+                    value={phone}
+                    onChange={(event) => setPhone(event.target.value)}
+                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
+                    placeholder="+48 600 000 000"
+                    autoComplete="tel"
+                    inputMode="tel"
+                  />
+                </label>
+
+                <label className="flex flex-col gap-2 text-sm text-zinc-300 sm:col-span-2">
+                  Wiadomość
+                  <textarea
+                    required
+                    name="message"
+                    rows={6}
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
+                    className="rounded-3xl border border-white/10 bg-white/5 px-4 py-3.5 text-white outline-none transition placeholder:text-zinc-500 focus:border-emerald-300/50 focus:bg-white/10"
+                    placeholder="Opisz, w czym możemy Ci pomóc..."
+                  />
+                </label>
+
+                <div className="flex flex-col gap-4 pt-2 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm leading-6 text-zinc-400">
+                    Twoje dane są bezpieczne i szyfrowane.
+                  </p>
+                  <button
+                    type="submit"
+                    disabled={isPending}
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-emerald-300 px-6 py-3.5 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isPending ? 'Wysyłanie...' : 'Wyślij wiadomość'}
+                    {!isPending && <Send className="h-4 w-4" />}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Dane firmy */}

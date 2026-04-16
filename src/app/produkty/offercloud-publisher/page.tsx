@@ -154,10 +154,12 @@ export default function OfferCloudPublisherPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href="#demo"
+                href="https://panel.offercloud.pl"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
               >
-                Zobacz demo
+                Panel
               </Link>
             </div>
 
@@ -181,7 +183,8 @@ export default function OfferCloudPublisherPage() {
                 },
                 {
                   label: "Dla czytelnika",
-                  value: "Nowa użyteczna treść i prosty sposób dodawania ogłoszeń.",
+                  value:
+                    "Nowa użyteczna treść i prosty sposób dodawania ogłoszeń.",
                 },
                 {
                   label: "Dla wydawcy",
@@ -201,7 +204,9 @@ export default function OfferCloudPublisherPage() {
                 <div
                   key={item.label}
                   className="oc-seq-pop rounded-3xl border border-white/10 bg-black/20 px-6 py-5 shadow-[0_30px_120px_rgba(0,0,0,0.35)]"
-                  style={{ "--oc-delay": `${index * 1.2}s` } as React.CSSProperties}
+                  style={
+                    { "--oc-delay": `${index * 1.2}s` } as React.CSSProperties
+                  }
                 >
                   <p className="oc-seq-pop-label text-xs uppercase tracking-[0.22em]">
                     {item.label}
